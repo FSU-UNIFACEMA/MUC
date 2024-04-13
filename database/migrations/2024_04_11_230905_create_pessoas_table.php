@@ -20,23 +20,27 @@ return new class extends Migration
             $table->string('bairro');
             $table->string('ponto_ref');
             $table->string('data_nascimento');
-            $table->integer('estado_civil');
+            $table->string('estado_civil');
             $table->string('cpf');
             $table->string('rg');
-            $table->integer('sexo');
+            $table->string('sexo');
             $table->string('ocupacao');
             $table->string('renda_mes');
             $table->string('escolaridade');
-            $table->integer('identidade_genero');
+            $table->string('identidade_genero');
             $table->string('nome_mae');
             $table->string('nome_pai');
             $table->string('religiao');
-            $table->integer('etnia');
+            $table->string('etnia');
             $table->string('telefone');
             $table->string('email');
-            $table->integer('habitacao');
-            $table->integer('condicao_moradia');
-            $table->integer('acesso_moradia');
+            $table->string('habitacao');
+
+            $table->string('beneficio_social');
+            $table->string('qual_beneficio');
+            $table->string('necessidade_especial');
+            $table->string('qual_necessidade');
+            $table->string('acesso_domicilio');
 
 
 

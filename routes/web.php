@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PessoaController;
 use App\Http\Controllers\SociofamiliarController;
-
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +17,7 @@ use App\Http\Controllers\SociofamiliarController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+}) ->name('principal');
 Route::get('/login', function (){
     return view('login');
 });
@@ -27,6 +27,11 @@ Route::get('/login', function (){
 Route::get('pessoas/create',[PessoaController::class,'create'])->name('pessoas_create');
 Route::post('pessoas',[PessoaController::class,'store'])->name('pessoas_store');
 
-//rotas parar Sociofamilar
+//rotas para Sociofamilar
 Route::get('questionario/create',[SociofamiliarController::class,'create'])->name('sociofamiliar_create');
 Route::post('questionario',[SociofamiliarController::class,'store'])->name('sociofamiliar_store');
+
+//rotas para Auth
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
