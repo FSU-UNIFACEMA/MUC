@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class PessoaController extends Controller
 {
+    public function index()
+    {
+        $pessoa = Pessoa::all();
+        return view('pessoa.index', compact('pessoa'));
+    }
     public function create()
     {
         return view('pessoa.create');
@@ -50,5 +55,30 @@ class PessoaController extends Controller
 
 
         return redirect()->route('pessoas_create')->with('success', 'Cadastro salvo com sucesso!');
+    }
+
+
+    public function buscarPorNome(Request $request)
+    {
+        $nome = $request->input('nome');
+
+        if ($nome) {
+             $pessoa= Pessoa::where('nome', 'like', '%' . $nome . '%')->get();
+        } else {
+            $pessoa = Pessoa::all();
+        }
+
+        return view('Pessoa.index', compact('pessoa'));
+    }
+    public function destroy($id){
+        $pessoa = Pessoa::findOrFail($id);
+        $pessoa->delete();
+        return redirect()->route('pessoas_index')->with('success', 'Pessoa apagada com sucesso.');
+    }
+    public function update(Request $request, $id)
+    {
+        $pessoa = Pessoa::findOrFail($id);
+        $pessoa->update($request->all());
+        return redirect()->route('pessoas_index')->with('success', 'Pessoa atualizada com sucesso.');
     }
 }

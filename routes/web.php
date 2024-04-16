@@ -16,20 +16,27 @@ use App\Http\Controllers\AuthController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('principal');
 }) ->name('principal');
+
+
 Route::get('/login', function (){
     return view('login');
 });
 
 
 //rotas para Pessoa
-Route::get('pessoas/create',[PessoaController::class,'create'])->name('pessoas_create');
-Route::post('pessoas',[PessoaController::class,'store'])->name('pessoas_store');
+Route::get('/pessoas/create',[PessoaController::class,'create'])->name('pessoas_create');
+Route::post('/pessoas',[PessoaController::class,'store'])->name('pessoas_store');
+Route::get('/pessoas/index',[PessoaController::class,'index'])->name('pessoas_index');
+Route::post('/pessoas/busca',[PessoaController::class,'buscarPorNome'])->name('pessoas_busca');
+Route::delete('/pessoas/{id}',[PessoaController::class,'destroy'])->name('excluir_pessoas');
+Route::put('/pessoas/{id}',[PessoaController::class,'update'])->name('atualizar_pessoas');
 
-//rotas para Sociofamilar
-Route::get('questionario/create',[SociofamiliarController::class,'create'])->name('sociofamiliar_create');
-Route::post('questionario',[SociofamiliarController::class,'store'])->name('sociofamiliar_store');
+
+
+
+
 
 //rotas para Auth
 Route::post('register', [AuthController::class, 'register']);

@@ -9,17 +9,7 @@
         .content {
             padding: 20px;
         }
-        footer {
-            background-color: #9932cc;
-            padding: 20px 0;
-            text-align: center;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-        .navbar-purple {
-            background-color: #9932cc;
-        }
+
     </style>
 </head>
 <body>
@@ -29,19 +19,21 @@
 <!-- Conteúdo -->
 <div class="content">
 
-    <!-- Cards de Pessoas e Trabalhos -->
+
     <div class="row">
         <div class="col-md-6 mb-4">
             <div class="card h-100">
                 <div class="card-body">
                     <h5 class="card-title">Informações sobre Pessoas</h5>
-                    <!-- Adicione aqui a tabela de pessoas -->
+
                     <table class="table">
                         <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nome</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">Endereço</th>
+                            <th scope="col">Numero da casa</th>
+                            <th scope="col">Bairro</th>
                             <th scope="col">Telefone</th>
                         </tr>
                         </thead>

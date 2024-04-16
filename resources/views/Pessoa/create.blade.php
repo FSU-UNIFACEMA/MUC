@@ -10,18 +10,7 @@
             padding: 20px;
         }
 
-        footer {
-            background-color: #9932cc;
-            padding: 20px 0;
-            text-align: center;
 
-            width: 100%;
-            bottom: 0;
-        }
-
-        .navbar-purple {
-            background-color: #9932cc;
-        }
     </style>
 </head>
 <body>
@@ -362,12 +351,12 @@
     </div>
 </div>
 
-<div class="modal fade" id="erroModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel"
+<div class="modal fade" id="erroModal" tabindex="-1" role="dialog" aria-labelledby="erroModal"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="successModalLabel">Não foi possivel salvar o cadastro</h5>
+                <h5 class="modal-title" id="erroModal">Não foi possivel salvar o cadastro</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

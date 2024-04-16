@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-purple">
-    <a class="navbar-brand" href="#">Nome da Empresa</a>
+    <a class="navbar-brand" href="{{route('principal')}}">MUC</a>
     <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -14,8 +14,8 @@
                     Pessoas
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Registro de associados</a>
-                    <a class="dropdown-item" href="#">Novo associado</a>
+                    <a class="dropdown-item" href="{{route('pessoas_index')}}">Registro de associados</a>
+                    <a class="dropdown-item" href="{{route('pessoas_create')}}">Novo associado</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Relatórios</a>
                 </div>
