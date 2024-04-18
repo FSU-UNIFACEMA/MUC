@@ -26,10 +26,22 @@
                     Projetos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Projetos cadastrados</a>
-                    <a class="dropdown-item" href="#">Novo projeto</a>
+                    <a class="dropdown-item" href="{{route('projetos_index')}}">Projetos cadastrados</a>
+                    <a class="dropdown-item" href="{{route('projetos_create')}}">Novo projeto</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Incluir associado a um projeto</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Configurações
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{route('user_index')}}">Lista de usuários</a>
+                    <a class="dropdown-item" href="{{route('user_create')}}">Novo usuário</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Sobre</a>
                 </div>
             </li>
             <li class="nav-item">

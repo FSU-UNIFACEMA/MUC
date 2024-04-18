@@ -9,7 +9,13 @@
         .content {
             padding: 20px;
         }
-
+        footer{
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -21,11 +27,12 @@
 
 
     <div class="row">
+
         <div class="col-md-6 mb-4">
             <div class="card h-100">
                 <div class="card-body">
                     <h5 class="card-title">Informações sobre Pessoas</h5>
-
+                    <div class="table-responsive">
                     <table class="table">
                         <thead>
                         <tr>
@@ -57,7 +64,9 @@
                             <td>(11) 99876-5432</td>
                         </tr>
                         </tbody>
+
                     </table>
+                    </div>
                 </div>
             </div>
         </div>

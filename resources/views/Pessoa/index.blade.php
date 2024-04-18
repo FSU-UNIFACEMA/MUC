@@ -9,8 +9,6 @@
         .content {
             padding: 20px;
         }
-
-
     </style>
 </head>
 <body>
@@ -20,7 +18,6 @@
 <!-- Conteúdo -->
 <div class="container">
     <h1>Registro de associados</h1>
-
 
     <form action="{{ route('pessoas_busca') }}" method="POST" class="mb-3">
         @csrf
@@ -34,40 +31,41 @@
             Nenhum registro encontrado.
         </div>
     @else
-
-    <table class="table table-striped table-hover">
-        <thead class="table-dark">
-        <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Endereço</th>
-            <th scope="col">Numero da Casa</th>
-            <th scope="col">Bairro</th>
-            <th scope="col">Telefone</th>
-            <th scope="col">Ações</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($pessoa as $p)
+        <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
             <tr>
-                <td>{{ $p->nome}}</td>
-                <td>{{ $p->endereco}}</td>
-                <td>{{ $p->numero_casa}}</td>
-                <td>{{ $p->bairro}}</td>
-                <td>{{ $p->telefone}}</td>
-                <td>
-                    <form id="deleteForm" action="{{ route('excluir_pessoas', $p->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-dark btn-sm">Apagar</button>
-                    </form>
-                    <button class="btn btn-secondary btn-sm"
-                            onclick="openEditModal('{{ $p->id }}', '{{ $p->nome}}', '{{ $p->endereco}}', '{{ $p->numero_casa }}', '{{ $p->bairro }}', '{{ $p->telefone }}')">Editar
-                    </button>
-                </td>
+                <th scope="col">Nome</th>
+                <th scope="col">Endereço</th>
+                <th scope="col">Numero da Casa</th>
+                <th scope="col">Bairro</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Ações</th>
             </tr>
-        @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @foreach($pessoa as $p)
+                <tr>
+                    <td>{{ $p->nome}}</td>
+                    <td>{{ $p->endereco}}</td>
+                    <td>{{ $p->numero_casa}}</td>
+                    <td>{{ $p->bairro}}</td>
+                    <td>{{ $p->telefone}}</td>
+                    <td>
+                        <form id="deleteForm" action="{{ route('excluir_pessoas', $p->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-dark btn-sm">Apagar</button>
+                        </form>
+                        <button class="btn btn-secondary btn-sm"
+                                onclick="openEditModal('{{ $p->id }}', '{{ $p->nome}}', '{{ $p->endereco}}', '{{ $p->numero_casa }}', '{{ $p->bairro }}', '{{ $p->telefone }}')">Editar
+                        </button>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+        </div>
     @endif
 </div>
 
@@ -98,6 +96,14 @@
     </div>
 </div>
 
+<!-- Footer -->
+@include('miscellaneous.footer')
+
+<!-- Adicione o Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -108,19 +114,8 @@
         $('#endereco').val(endereco);
         $('#bairro').val(bairro);
         $('#telefone').val(telefone);
-
-
     }
 </script>
-
-<!-- Footer -->
-@include('miscellaneous.footer')
-
-<!-- Adicione o Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 
 </body>
 </html>

@@ -2,11 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pessoa;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; // Importe o facade do Auth
 use Illuminate\Support\Facades\Validator; // Importe o facade do Validator
 class AuthController extends Controller
 {
+
+    public function create()
+    {
+        return view('User.create');
+    }
+    public function index()
+    {
+        $user = User::all();
+        return view('User.index', compact('user'));
+    }
+
+    public function buscarPorNome(Request $request)
+    {
+        $nome = $request->input('nome');
+
+        if ($nome) {
+            $user = User::where('name', 'like', '%' . $nome . '%')->get();
+        } else {
+            $user = User::all();
+        }
+    }
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -27,7 +50,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return response()->json(['user' => $user]);
+        return view('User.create');
     }
 
     public function login(Request $request)
@@ -53,6 +76,18 @@ class AuthController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('login');
+        return view('login');
+    }
+
+    public function destroy($id){
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('user_index')->with('success', 'Usuário apagada com sucesso.');
+    }
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+        return redirect()->route('user_index')->with('success', 'Usuário atualizada com sucesso.');
     }
 }

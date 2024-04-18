@@ -19,8 +19,7 @@ class PessoaController extends Controller
 
     public function store(Request $request)
     {
-        //dd($request->all());
-
+    try{
         $pessoa = Pessoa::create([
             'nome' => $request->nome,
             'nome_social' => $request->nome_social,
@@ -53,8 +52,10 @@ class PessoaController extends Controller
 
         ]);
 
-
         return redirect()->route('pessoas_create')->with('success', 'Cadastro salvo com sucesso!');
+    } catch (\Exception $e){
+        return redirect()->route('pessoas_create')->with('error', 'Não foi possível salvar o cadastro. Por favor, tente novamente.');
+    }
     }
 
 

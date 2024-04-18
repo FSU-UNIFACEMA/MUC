@@ -6,11 +6,6 @@
     <title>MUC</title>
     <link href="../css/bootstrap.css" rel="stylesheet">
     <style>
-        .content {
-            padding: 20px;
-        }
-
-
     </style>
 </head>
 <body>
@@ -18,7 +13,7 @@
 <!-- Navbar Roxo -->
 @include('miscellaneous.navbar')
 <!-- Conteúdo -->
-<div class="content">
+<div class="container">
 
     <h5 class="text-center">Dados Pessoais</h5>
 
@@ -369,11 +364,11 @@
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        var successMessage = '{{ session('success') }}';
+        var Message = '{{ session('success') }}';
 
-        if (successMessage) {
+        if (Message=='success') {
             $('#successModal').modal('show');
-        }else{
+        }if(Message=='error'){
             $('#erroModal').modal('show');
         }
     });
