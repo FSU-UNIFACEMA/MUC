@@ -29,7 +29,7 @@
                     <a class="dropdown-item" href="{{route('projetos_index')}}">Projetos cadastrados</a>
                     <a class="dropdown-item" href="{{route('projetos_create')}}">Novo projeto</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Incluir associado a um projeto</a>
+                    <a class="dropdown-item" href="{{route('projeto_pessoa_registro')}}">Incluir associado a um projeto</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

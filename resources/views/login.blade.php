@@ -6,6 +6,8 @@
     <title>MUC</title>
 
     <link href="css/bootstrap.css" rel="stylesheet">
+
+
     <style>
         .navbar-purple {
             background-color: #9932cc; /* Purple */

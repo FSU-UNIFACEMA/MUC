@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MUC</title>
+
     <link href="../css/bootstrap.css" rel="stylesheet">
+
     <style>
     </style>
 </head>
@@ -316,6 +318,16 @@
                 <label for="qual_necessidade">Qual?</label>
                 <input type="text" class="form-control" id="qual_necessidade" name="qual_necessidade"
                        placeholder="Descreva a necessidade especial">
+            </div>
+            <div class="form-group">
+
+                <label for="disciplinas" class="form-label">Projeto social que ira participar</label>
+                <select class="form-control form-control-lg" id="projetos" name="projetos[]" multiple>
+                    @foreach($projetos as $projeto)
+                        <option value="{{ $projeto->id }}"> {{ $projeto->nome_projeto}}</option>
+                    @endforeach
+                </select>
+
             </div>
             <div class="form-group text-right">
                 <button class="btn btn-primary" type="submit" id="submitBtn">Enviar</button>

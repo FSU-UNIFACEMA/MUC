@@ -38,5 +38,10 @@ class Pessoa extends Model
         ];
 
 
+    public function projetos()
+    {
+        return $this->belongsToMany(Projeto::class, 'pessoa_projeto');
+    }
+
     use HasFactory;
 }

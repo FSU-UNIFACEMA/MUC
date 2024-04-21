@@ -27,6 +27,8 @@ class ProjetoController extends Controller
         }
 
     }
+
+
     public function update(Request $request, $id){
      $projeto = Projeto::findOrFail($id);
      $projeto ->update($request->all());

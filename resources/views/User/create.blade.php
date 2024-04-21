@@ -6,6 +6,8 @@
     <title>MUC</title>
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="manifest" href="../manifest.json">
+    <script src="../sw-register.js"></script>
     <style>
     </style>
 </head>

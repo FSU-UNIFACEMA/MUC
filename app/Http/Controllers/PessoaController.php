@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pessoa;
+use App\Models\Projeto;
 use Illuminate\Http\Request;
 
 class PessoaController extends Controller
@@ -10,11 +11,12 @@ class PessoaController extends Controller
     public function index()
     {
         $pessoa = Pessoa::all();
-        return view('pessoa.index', compact('pessoa'));
+        return view('pessoa.index', compact('pessoa',));
     }
     public function create()
     {
-        return view('pessoa.create');
+        $projetos = Projeto::all();
+        return view('pessoa.create', compact('projetos'));
     }
 
     public function store(Request $request)
@@ -51,6 +53,7 @@ class PessoaController extends Controller
             'qual_necessidade' => $request->qual_necessidade,
 
         ]);
+        $pessoa ->projetos()->attach($request->input('projetos'));
 
         return redirect()->route('pessoas_create')->with('success', 'Cadastro salvo com sucesso!');
     } catch (\Exception $e){
@@ -71,6 +74,8 @@ class PessoaController extends Controller
 
         return view('Pessoa.index', compact('pessoa'));
     }
+
+
     public function destroy($id){
         $pessoa = Pessoa::findOrFail($id);
         $pessoa->delete();
