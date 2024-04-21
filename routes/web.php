@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProjetoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PessoaController;
-use App\Http\Controllers\SociofamiliarController;
+use App\Http\Controllers\AtendimentoController;
 use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +56,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/index', [AuthController::class,'index'])->name('user_index');
 
 });
+
+// rota de atendimento
+Route::get('/atendimentos/create', [AtendimentoController::class,'create'])->name('atendimentos_create');
+Route::post('/atendimentos', [AtendimentoController::class,'store'])->name('atendimentos_store');
+Route::get('/atendimentos/index', [AtendimentoController::class,'index'])->name('atendimentos_index');
 
 // Rotas para Auth
 
