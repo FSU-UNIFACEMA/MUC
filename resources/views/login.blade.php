@@ -99,17 +99,48 @@
         </div>
     </div>
 </div>
-    <!-- Footer -->
-<footer>
-    <div class="container">
-        <span style="color:#000000">© 2024 ADS 🧑🏽‍💻. Todos os direitos reservados.</span>
+
+<!-- Adicione isso dentro da tag body -->
+<div class="modal" id="errorModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Erro de Autenticação</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @if(session('error'))
+                    <p>{{ session('error') }}</p>
+                @endif
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
     </div>
-</footer>
+</div>
 
 <!-- Adicione o Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        @if(session('error'))
+        $('#errorModal').modal('show');
+        @endif
+    });
+</script>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <span style="color:#000000">© 2024 ADS 🧑🏽‍💻. Todos os direitos reservados.</span>
+    </div>
+</footer>
 
 </body>
 </html>

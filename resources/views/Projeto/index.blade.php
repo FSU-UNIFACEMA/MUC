@@ -15,9 +15,8 @@
 
 <!-- Navbar Roxo -->
 @include('miscellaneous.navbar')
-<!-- Conteúdo -->
 <div class="container">
-    <h1>Registro de associados</h1>
+    <h1>Registro de projetos</h1>
 
     <form action="{{ route('projetos_busca') }}" method="POST" class="mb-3">
         @csrf
@@ -46,7 +45,7 @@
                         <td>{{ $p->nome_projeto}}</td>
                         <td>{{ $p->descricao_projeto}}</td>
                         <td>
-                            <form id="deleteForm" action="{{ route('excluir_projetos', $p->id) }}" method="POST">
+                            <form id="deleteForm{{ $p->id }}" action="{{ route('excluir_projetos', $p->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-dark btn-sm">Apagar</button>
@@ -76,12 +75,12 @@
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
-                        <label for="nome" class="form-label">Nome do projeto</label>
-                        <input type="text" class="form-control" id="nome" name="nome_projeto">
+                        <label for="nome_projeto" class="form-label">Nome do projeto</label>
+                        <input type="text" class="form-control" id="nome_projeto_modal" name="nome_projeto">
                     </div>
                     <div class="mb-3">
-                        <label for="projeto" class="form-label">Descrição do projeto</label>
-                        <textarea type="text" class="form-control" id="projeto" name="descricao_projeto"></textarea>
+                        <label for="descricao_projeto" class="form-label">Descrição do projeto</label>
+                        <textarea class="form-control" id="descricao_projeto_modal" name="descricao_projeto"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Salvar Alterações</button>
                 </form>
@@ -93,11 +92,11 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    function openEditModal(id,nome_projeto, descricao_projeto) {
+    function openEditModal(id, nome_projeto, descricao_projeto) {
         $('#editModal').modal('show');
         $('#editForm').attr('action', '/projetos/' + id);
-        $('#nome_projeto').val(nome_projeto);
-        $('#descricao_projeto').val(descricao_projeto);
+        $('#nome_projeto_modal').val(nome_projeto);
+        $('#descricao_projeto_modal').val(descricao_projeto);
     }
 </script>
 

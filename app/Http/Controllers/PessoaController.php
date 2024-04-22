@@ -12,6 +12,11 @@ class PessoaController extends Controller
         $pessoa = Pessoa::all();
         return view('pessoa.index', compact('pessoa'));
     }
+
+    public function principalPessoa(){
+        $ultimasPessoas = Pessoa::latest()->take(5)->get();
+        return view('principal')->with('ultimasPessoas', $ultimasPessoas);
+    }
     public function create()
     {
         return view('pessoa.create');

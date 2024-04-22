@@ -16,9 +16,9 @@
 <div class="container">
 
 
-    <h5 class="text-left mt-5">Dados do usuario</h5>
+    <h5 class="text-left mt-5">Dados do projeto</h5>
 
-    <form action="{{route('projetos_store')}}" method="POST">
+    <form action="{{ route('projetos_store') }}" method="POST">
         @csrf
 
         <div class="form-row">
@@ -28,13 +28,13 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="descricao_projeto">Descrição do projeto</label>
-                <input type="text" class="form-control" id="nome_social" name="descricao_projeto" placeholder="Descrição do projeto"
+                <input type="text" class="form-control" id="descricao_projeto" name="descricao_projeto" placeholder="Descrição do projeto"
                        required>
             </div>
         </div>
-            <div class="form-group text-right">
-                <button class="btn btn-primary" type="submit" id="submitBtn">Enviar</button>
-            </div>
+        <div class="form-group text-right">
+            <button class="btn btn-primary" type="submit" id="submitBtn">Enviar</button>
+        </div>
 
     </form>
 
@@ -42,6 +42,9 @@
 
 
 <!-- Footer -->
+<footer class="fixed-bottom">
+    <!-- Conteúdo do footer -->
+</footer>
 
 
 <!-- Modal de confirmação -->
@@ -62,12 +65,12 @@
     </div>
 </div>
 
-<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="erroModal"
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModal"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="errorModal">Não foi possivel salvar o cadastro</h5>
+                <h5 class="modal-title" id="errorModal">Não foi possível salvar o cadastro</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -82,9 +85,9 @@
     document.addEventListener("DOMContentLoaded", function () {
         var Message = '{{ session('messageproj') }}';
 
-        if (Message=='success') {
+        if (Message == 'success') {
             $('#successModal').modal('show');
-        }if(Message=='error'){
+        } else if (Message == 'error') {
             $('#errorModal').modal('show');
         }
     });
