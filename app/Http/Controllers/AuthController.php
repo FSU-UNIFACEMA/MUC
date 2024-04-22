@@ -61,14 +61,14 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 400);
+            return view('errorview.fail');
         }
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
             return redirect()->route('principal');
         } else {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return redirect()->route('login')->with('error', 'Usuário ou senha inválidos.');
         }
     }
 

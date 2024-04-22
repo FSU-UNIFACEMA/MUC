@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('login');
 })->name('login');
 
+Route::get('/', function () {
+    return view('login');
+})->name('loginreturn');
+
 Route::middleware(['auth'])->group(function () {
     // Rotas para a página principal
     Route::get('/index', function () {
@@ -34,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/pessoas/busca', [PessoaController::class, 'buscarPorNome'])->name('pessoas_busca');
     Route::delete('/pessoas/{id}', [PessoaController::class, 'destroy'])->name('excluir_pessoas');
     Route::put('/pessoas/{id}', [PessoaController::class, 'update'])->name('atualizar_pessoas');
+    Route::get('/index', [PessoaController::class, 'principalPessoa'])->name('principal');
 
     // Rotas para Projeto
     Route::get('/projetos/create', [ProjetoController::class, 'create'])->name('projetos_create');
@@ -60,3 +65,11 @@ Route::middleware(['auth'])->group(function () {
 
 // Rota de login
 Route::match(['get', 'post'], 'login', [AuthController::class, 'login'])->name('login');
+
+Route::fallback(function () {
+    return view('errorview.404');
+});
+
+Route::get('/deslogado', function () {
+    return view('errorview.deslogado');
+})->name('deslogado');
