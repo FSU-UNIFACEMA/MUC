@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sociofamiliars', function (Blueprint $table) {
+        Schema::create('projetos', function (Blueprint $table) {
             $table->id();
-            $table -> integer('beneficio_social');
-            $table->string('qual_beneficio');
-            $table -> integer('necessidade_especial');
-            $table->string('qual_necessidade');
+            $table->string('nome_projeto');
+            $table->text('descricao_projeto');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sociofamiliars');
+        Schema::dropIfExists('projetos');
     }
 };

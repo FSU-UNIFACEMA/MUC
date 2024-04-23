@@ -1,3 +1,13 @@
+<?php
+use App\Models\Pessoa;
+use Illuminate\Support\Facades\DB;
+$anoVigente = date('Y');
+
+$quantidadePorMes = Pessoa::select(DB::raw('MONTH(created_at) as mes'), DB::raw('COUNT(*) as quantidade'))
+    ->whereRaw('YEAR(created_at) = ?', [$anoVigente])
+    ->groupBy(DB::raw('MONTH(created_at)'))
+    ->get();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,16 +19,12 @@
         .content {
             padding: 20px;
         }
-        footer {
-            background-color: #9932cc;
+        footer{
             padding: 20px 0;
             text-align: center;
             position: fixed;
             width: 100%;
             bottom: 0;
-        }
-        .navbar-purple {
-            background-color: #9932cc;
         }
     </style>
 </head>
@@ -29,52 +35,50 @@
 <!-- Conteúdo -->
 <div class="content">
 
-    <!-- Cards de Pessoas e Trabalhos -->
+
     <div class="row">
+
         <div class="col-md-6 mb-4">
             <div class="card h-100">
                 <div class="card-body">
                     <h5 class="card-title">Informações sobre Pessoas</h5>
-                    <!-- Adicione aqui a tabela de pessoas -->
+                    <div class="table-responsive">
                     <table class="table">
                         <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nome</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">Endereço</th>
+                            <th scope="col">Numero/casa</th>
+                            <th scope="col">Bairro</th>
                             <th scope="col">Telefone</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>João</td>
-                            <td>joao@example.com</td>
-                            <td>(11) 91234-5678</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Maria</td>
-                            <td>maria@example.com</td>
-                            <td>(11) 98765-4321</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Carlos</td>
-                            <td>carlos@example.com</td>
-                            <td>(11) 99876-5432</td>
-                        </tr>
+                        @foreach ($ultimasPessoas as $pessoa)
+                            <tr>
+                                <td>{{ $pessoa->id }}</td>
+                                <td>{{ $pessoa->nome }}</td>
+                                <td>{{ $pessoa->endereco }}</td>
+                                <td>{{ $pessoa->numero_casa }}</td>
+                                <td>{{ $pessoa->bairro }}</td>
+                                <td>{{ $pessoa->telefone }}</td>
+
+                            </tr>
+                        @endforeach
                         </tbody>
+
                     </table>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-6 mb-4">
             <div class="card h-100">
                 <div class="card-body">
-                    <h5 class="card-title">Informações sobre Trabalhos</h5>
+                    <h5 class="card-title">Gráfico de novos associados no ano</h5>
                     <!-- Adicione aqui o gráfico de trabalhos -->
-                    <canvas id="graficoTrabalhos"></canvas>
+                    <canvas id="graficoPessoas"></canvas>
                 </div>
             </div>
         </div>
@@ -90,18 +94,31 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<!-- Adicione aqui o código para o gráfico (exemplo usando Chart.js) -->
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    // Exemplo de gráfico de barras para trabalhos
-    var ctx = document.getElementById('graficoTrabalhos').getContext('2d');
-    var graficoTrabalhos = new Chart(ctx, {
-        type: 'bar',
+    var meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+
+    var dados = {!! $quantidadePorMes !!};
+
+    var labels = [];
+    var valores = [];
+
+    dados.forEach(function(item) {
+        var mesIndex = item.mes - 1;
+        labels.push(meses[mesIndex]);
+        valores.push(item.quantidade);
+    });
+
+
+    var ctx = document.getElementById('graficoPessoas').getContext('2d');
+    var graficoPessoas = new Chart(ctx, {
+        type: 'line',
         data: {
-            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            labels: labels,
             datasets: [{
-                label: 'Número de Trabalhos',
-                data: [12, 19, 3, 5, 2, 3],
+                label: 'Número de Pessoas',
+                data: valores,
                 backgroundColor: 'rgba(54, 162, 235, 0.5)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1
@@ -111,7 +128,8 @@
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        stepSize: 1,
                     }
                 }]
             }

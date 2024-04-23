@@ -29,11 +29,14 @@ class Pessoa extends Model
         'telefone',
         'email',
         'habitacao',
-        'condicao_moradia',
-        'acesso_domicilio'];
-    use HasFactory;
-    public function questionarioSocioFamiliar(){
-        return $this->hasOne(Sociofamiliar::class);
-    }
+        'acesso_domicilio',
+        'beneficio_social',
+        'qual_beneficio',
+        'necessidade_especial',
+        'qual_necessidade',
 
+        ];
+
+
+    use HasFactory;
 }
