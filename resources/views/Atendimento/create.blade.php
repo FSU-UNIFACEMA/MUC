@@ -45,11 +45,15 @@
                 <label for="rg">RG</label>
                 <input type="text" class="form-control" id="rg" name="rg" placeholder="RG" required>
             </div>
+            <div class="form-group col-md-6">
+                <label for="cpf">CPF</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" required>
+            </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="contato">Contato</label>
+                <label for="telefone">Contato</label>
                 <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="Telefone" required>
             </div>
             <div class="form-group col-md-6">
@@ -86,12 +90,8 @@
 
 </div>
 
-<!-- Footer -->
-
-
 <!-- Modal de confirmação -->
-<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel"
-     aria-hidden="true">
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -107,12 +107,11 @@
     </div>
 </div>
 
-<div class="modal fade" id="erroModal" tabindex="-1" role="dialog" aria-labelledby="erroModal"
-     aria-hidden="true">
+<div class="modal fade" id="erroModal" tabindex="-1" role="dialog" aria-labelledby="erroModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="erroModal">Não foi possível salvar o cadastro</h5>
+                <h5 class="modal-title" id="erroModalLabel">Não foi possível salvar o cadastro</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -123,25 +122,26 @@
         </div>
     </div>
 </div>
+
+<!-- Adicione o Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    $(document).ready(function () {
         var Message = '{{ session('success') }}';
 
-        if (Message=='success') {
+        if (Message === 'success') {
             $('#successModal').modal('show');
-        }if(Message=='error'){
+        } else if (Message === 'error') {
             $('#erroModal').modal('show');
         }
     });
 </script>
 
-<!-- Adicione o Bootstrap JS -->
-<!-- Adicione o Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+<!-- Footer -->
 @include('miscellaneous.footer')
 </body>
 </html>
-

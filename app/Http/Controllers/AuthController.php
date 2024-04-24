@@ -5,19 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\Pessoa;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; // Importe o facade do Auth
-use Illuminate\Support\Facades\Validator; // Importe o facade do Validator
+use Illuminate\Support\Facades\Auth;
+
+// Importe o facade do Auth
+use Illuminate\Support\Facades\Validator;
+
+// Importe o facade do Validator
 class AuthController extends Controller
 {
 
     public function create()
     {
-        return view('User.create');
+        return view('user.create');
     }
+
     public function index()
     {
         $user = User::all();
-        return view('User.index', compact('user'));
+        return view('user.index', compact('user'));
     }
 
     public function buscarPorNome(Request $request)
@@ -30,6 +35,7 @@ class AuthController extends Controller
             $user = User::all();
         }
     }
+
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -50,7 +56,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return view('User.create');
+        return view('user.create');
     }
 
     public function login(Request $request)
@@ -79,11 +85,13 @@ class AuthController extends Controller
         return view('login');
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         $user = User::findOrFail($id);
         $user->delete();
         return redirect()->route('user_index')->with('success', 'Usuário apagada com sucesso.');
     }
+
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);

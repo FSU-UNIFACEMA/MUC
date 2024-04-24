@@ -35,8 +35,13 @@ class Pessoa extends Model
         'necessidade_especial',
         'qual_necessidade',
 
-        ];
+    ];
 
+
+    public function projetos()
+    {
+        return $this->belongsToMany(Projeto::class, 'pessoa_projeto');
+    }
 
     use HasFactory;
 }
