@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MUC</title>
     <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="manifest" href="../manifest.json">
+    <script src="../sw-register.js"></script>
     <style>
         .content {
             padding: 20px;
@@ -48,7 +50,7 @@
                         <td>{{ $u->email}}</td>
                         <td type="password">***********</td>
                         <td>
-                            <form id="deleteForm" action="{{ route('excluir_projetos', $u->id) }}" method="POST">
+                            <form id="deleteForm" action="{{ route('user_excluir', $u->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-dark btn-sm">Apagar</button>
@@ -66,7 +68,8 @@
 </div>
 
 <!-- Modal -->
-<<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+<
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -96,9 +99,9 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    function openEditModal(id,name, email) {
+    function openEditModal(id, name, email) {
         $('#editModal').modal('show');
-        $('#editForm').attr('action', '/usuarios/' + id);
+        $('#editForm').attr('action', '/user/' + id);
         $('#name').val(name);
         $('#email').val(email);
     }

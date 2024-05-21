@@ -54,9 +54,12 @@ class AuthController extends Controller
             'password' => bcrypt($request->password)
         ]);
 
-        Auth::login($user);
-
-        return view('user.create');
+        try {
+            Auth::login($user);
+            return redirect('user_create')->with('success', 'Usuário criado com sucesso!');
+        }catch (AuthException $e) {
+            return view('errorview.fail');
+        }
     }
 
     public function login(Request $request)
@@ -89,13 +92,13 @@ class AuthController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect()->route('user_index')->with('success', 'Usuário apagada com sucesso.');
+        return redirect()->route('user_index')->with('success', 'Usuário apagado com sucesso.');
     }
 
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
         $user->update($request->all());
-        return redirect()->route('user_index')->with('success', 'Usuário atualizada com sucesso.');
+        return redirect()->route('user_index')->with('success', 'Usuário atualizado com sucesso.');
     }
 }

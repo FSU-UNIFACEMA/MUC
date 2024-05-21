@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MUC</title>
     <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="manifest" href="../manifest.json">
+    <script src="../sw-register.js"></script>
     <style>
     </style>
 </head>
@@ -24,11 +26,13 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="nome">Nome do projeto</label>
-                <input type="text" class="form-control" id="nome" name="nome_projeto" placeholder="Nome do projeto" required>
+                <input type="text" class="form-control" id="nome" name="nome_projeto" placeholder="Nome do projeto"
+                       required>
             </div>
             <div class="form-group col-md-6">
                 <label for="descricao_projeto">Descrição do projeto</label>
-                <input type="text" class="form-control" id="descricao_projeto" name="descricao_projeto" placeholder="Descrição do projeto"
+                <input type="text" class="form-control" id="descricao_projeto" name="descricao_projeto"
+                       placeholder="Descrição do projeto"
                        required>
             </div>
         </div>

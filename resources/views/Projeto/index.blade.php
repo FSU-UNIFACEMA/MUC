@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MUC</title>
     <link href="../css/bootstrap.css" rel="stylesheet">
+
     <style>
         .content {
             padding: 20px;
@@ -18,7 +19,7 @@
 <div class="container">
     <h1>Registro de projetos</h1>
 
-    <form action="{{ route('projetos_busca') }}" method="POST" class="mb-3">
+    <form action="{{ route('atendimentos_busca') }}" method="POST" class="mb-3">
         @csrf
         <div class="input-group">
             <input type="text" class="form-control" name="nome_projeto" placeholder="Buscar por nome do projeto">
@@ -45,13 +46,15 @@
                         <td>{{ $p->nome_projeto}}</td>
                         <td>{{ $p->descricao_projeto}}</td>
                         <td>
-                            <form id="deleteForm{{ $p->id }}" action="{{ route('excluir_projetos', $p->id) }}" method="POST">
+                            <form id="deleteForm{{ $p->id }}" action="{{ route('excluir_projetos', $p->id) }}"
+                                  method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-dark btn-sm">Apagar</button>
                             </form>
                             <button class="btn btn-secondary btn-sm"
-                                    onclick="openEditModal('{{ $p->id }}', '{{ $p->nome_projeto}}', '{{ $p->descricao_projeto}}')">Editar
+                                    onclick="openEditModal('{{ $p->id }}', '{{ $p->nome_projeto}}', '{{ $p->descricao_projeto}}')">
+                                Editar
                             </button>
                         </td>
                     </tr>
@@ -76,11 +79,11 @@
                     @method('PUT')
                     <div class="mb-3">
                         <label for="nome_projeto" class="form-label">Nome do projeto</label>
-                        <input type="text" class="form-control" id="nome_projeto_modal" name="nome_projeto">
+                        <input type="text" class="form-control" id="nome_projeto" name="nome_projeto">
                     </div>
                     <div class="mb-3">
                         <label for="descricao_projeto" class="form-label">Descrição do projeto</label>
-                        <textarea class="form-control" id="descricao_projeto_modal" name="descricao_projeto"></textarea>
+                        <textarea class="form-control" id="descricao_projeto" name="descricao_projeto"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Salvar Alterações</button>
                 </form>
@@ -89,16 +92,18 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
     function openEditModal(id, nome_projeto, descricao_projeto) {
         $('#editModal').modal('show');
         $('#editForm').attr('action', '/projetos/' + id);
-        $('#nome_projeto_modal').val(nome_projeto);
-        $('#descricao_projeto_modal').val(descricao_projeto);
+        $('#nome_projeto').val(nome_projeto);
+        $('#descricao_projeto').val(descricao_projeto);
     }
 </script>
+
+
+
 
 <!-- Footer -->
 @include('miscellaneous.footer')
@@ -108,5 +113,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

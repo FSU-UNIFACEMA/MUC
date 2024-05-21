@@ -6,6 +6,8 @@
     <title>MUC</title>
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="manifest" href="../manifest.json">
+    <script src="../sw-register.js"></script>
     <style>
     </style>
 </head>
@@ -33,7 +35,8 @@
                 <label for="password">Senha do usuário</label>
                 <div class="input-group">
                     <input type="password" class="form-control" id="password" name="password" required>
-                    <button type="button" class="btn btn-outline-secondary" id="showPasswordBtn" onclick="togglePasswordVisibility()">
+                    <button type="button" class="btn btn-outline-secondary" id="showPasswordBtn"
+                            onclick="togglePasswordVisibility()">
                         <i id="eyeIcon" class="bi bi-eye-slash"></i>
                     </button>
                 </div>
@@ -65,9 +68,10 @@
     document.addEventListener("DOMContentLoaded", function () {
         var Message = '{{ session('messageproj') }}';
 
-        if (Message=='success') {
+        if (Message == 'success') {
             $('#successModal').modal('show');
-        }if(Message=='error'){
+        }
+        if (Message == 'error') {
             $('#errorModal').modal('show');
         }
     });
