@@ -35,60 +35,6 @@
         </form>
     </div>
 
-    <!-- Modal de confirmação -->
-    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="successModalLabel">Sucesso</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span>&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Usuário salvo!
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de erro -->
-    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModal"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="errorModal">Erro!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span>&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Não foi possível salvar o usuário.
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de erro de email ja existe -->
-    <div class="modal fade" id="emailAlreadyExistsModal" tabindex="-1" role="dialog" aria-labelledby="errorModal"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="errorModal">Erro!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span>&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Email ja está cadastrado no sistema.
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script>
         function togglePasswordVisibility() {
             var passwordInput = document.getElementById('password');
@@ -104,21 +50,6 @@
                 eyeIcon.classList.add('bi-eye-slash');
             }
         }
-    </script>
-
-    <!-- Adicione o Bootstrap JS -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var Message = '{{ session('messageproj') }}';
-
-            if (Message == 'success') {
-                $('#successModal').modal('show');
-            } else if (Message == 'error') {
-                $('#errorModal').modal('show');
-            }else if (Message == 'emailAlreadyExists'){
-                $('#emailAlreadyExistsModal').modal('show');
-            }
-        });
     </script>
 
     <!-- Adicione o Bootstrap JS -->
