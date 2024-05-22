@@ -45,7 +45,15 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 400);
+
+            $errors = $validator->errors();
+
+            if ($errors->has('email')){
+                return redirect()->route('user_create')->with('messageproj', 'emailAlreadyExists');
+            }else{
+                return response()->json(['error' => $validator->errors()], 400);
+            }
+
         }
 
         $user = User::create([
@@ -56,9 +64,9 @@ class AuthController extends Controller
 
         try {
             Auth::login($user);
-            return redirect('user_create')->with('success', 'Usuário criado com sucesso!');
-        }catch (AuthException $e) {
-            return view('errorview.fail');
+            return redirect()->route('user_create')->with('messageproj', 'success');
+        }catch (\Exception $e) {
+            return redirect('user_create')->with('messageproj', 'error');
         }
     }
 

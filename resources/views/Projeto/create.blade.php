@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUC</title>
-    <link href="../css/bootstrap.css" rel="stylesheet">
-    <link rel="manifest" href="../manifest.json">
-    <script src="../sw-register.js"></script>
-    <style>
-    </style>
-</head>
-<body>
+@extends('layout')
+@section('title','Dados do projeto')
+@section('content')
 
-<!-- Navbar Roxo -->
-@include('miscellaneous.navbar')
 <!-- Conteúdo -->
 <div class="container">
 
@@ -36,6 +24,7 @@
                        required>
             </div>
         </div>
+
         <div class="form-group text-right">
             <button class="btn btn-primary" type="submit" id="submitBtn">Enviar</button>
         </div>
@@ -85,6 +74,7 @@
         </div>
     </div>
 </div>
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var Message = '{{ session('messageproj') }}';
@@ -102,6 +92,5 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
-@include('miscellaneous.footer')
-</body>
-</html>
+
+@endsection

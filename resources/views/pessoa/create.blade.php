@@ -1,32 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUC</title>
+@extends('layout')
+@section('title', 'Dados pessoais')
+@section('content')
 
-    <link href="../css/bootstrap.css" rel="stylesheet">
-    <style>
-        .content {
-            padding: 20px;
-        }
-
-        footer {
-            padding: 20px 0;
-            text-align: center;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
-
-
-</head>
-<body>
-
-<!-- Navbar Roxo -->
-
-@include('miscellaneous.navbar')
 <!-- Conteúdo -->
 <div class="container">
     <h5 class="text-center">Dados Pessoais</h5>
@@ -381,49 +356,47 @@
     </div>
 
 </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var message = '{{ session('success') }}';
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var message = '{{ session('success') }}';
 
-            if (message === 'success') {
-                $('#successModal').modal('show');
-            } else if (message === 'error') {
-                $('#errorModal').modal('show');
+        if (message === 'success') {
+            $('#successModal').modal('show');
+        } else if (message === 'error') {
+            $('#errorModal').modal('show');
+        }
+    });
+</script>
+
+<!-- inputmask codigo de mascara -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var inputCpf = document.getElementById('cpf');
+        inputCpf.addEventListener('input', function (e) {
+            var cpf = e.target.value.replace(/\D/g, '').substring(0, 11); // Limita a 11 caracteres
+            if (cpf.length > 3) {
+                cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
             }
+            if (cpf.length > 7) {
+                cpf = cpf.replace(/(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
+            }
+            if (cpf.length > 11) {
+                cpf = cpf.replace(/(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
+            }
+            e.target.value = cpf;
         });
-    </script>
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var inputTelefone = document.getElementById('telefone');
+        $(inputTelefone).inputmask('(99) 99999-9999');
+    });
+</script>
 
-    <!-- inputmask codigo de mascara -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var inputCpf = document.getElementById('cpf');
-            inputCpf.addEventListener('input', function (e) {
-                var cpf = e.target.value.replace(/\D/g, '').substring(0, 11); // Limita a 11 caracteres
-                if (cpf.length > 3) {
-                    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
-                }
-                if (cpf.length > 7) {
-                    cpf = cpf.replace(/(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
-                }
-                if (cpf.length > 11) {
-                    cpf = cpf.replace(/(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
-                }
-                e.target.value = cpf;
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var inputTelefone = document.getElementById('telefone');
-            $(inputTelefone).inputmask('(99) 99999-9999');
-        });
-    </script>
-
-    <!-- Adicione o Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
-
-</body>
-</html>
+<!-- Adicione o Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+@endsection

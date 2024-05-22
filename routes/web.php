@@ -23,6 +23,10 @@ Route::get('/', function () {
     return view('login');
 })->name('login');
 
+Route::get('/layout', function () {
+    return view('layout');
+})->name('layout');
+
 Route::get('/', function () {
     return view('login');
 })->name('loginreturn');
@@ -62,6 +66,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/index', [AuthController::class, 'index'])->name('user_index');
     Route::put('/user/{id}', [AuthController::class, 'update'])->name('user_atualizar');
     Route::delete('/user/{id}', [AuthController::class, 'destroy'])->name('user_excluir');
+
     // Rotas para  Atendimento
     Route::get('/atendimentos/create', [AtendimentoController::class, 'create'])->name('atendimentos_create');
     Route::post('/atendimentos', [AtendimentoController::class, 'store'])->name('atendimentos_store');
