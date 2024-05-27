@@ -42,9 +42,9 @@ class AtendimentoController extends Controller
 
         try {
             $atendimento = Atendimento::create($request->all());
-            return redirect()->route('atendimentos_create')->with('success', 'Atendimento salvo com sucesso!');
+            return redirect()->route('atendimentos_create')->with('mensagem', 'Atendimento salvo com sucesso!');
         } catch (\Exception $e) {
-            return redirect()->route('atendimentos_create')->with('error', 'Não foi possível salvar o atendimento. Por favor, tente novamente.');
+            return redirect()->route('atendimentos_create')->with('mensagem', 'Não foi possível salvar o atendimento. Por favor, tente novamente.');
         }
     }
 
@@ -71,14 +71,14 @@ class AtendimentoController extends Controller
 
         $atendimento = Atendimento::findOrFail($id);
         $atendimento->update($request->all());
-        return redirect()->route('atendimentos_index')->with('success', 'Atendimento atualizado com sucesso.');
+        return redirect()->route('atendimentos_index')->with('mensagem', 'Atendimento atualizado com sucesso.');
     }
 
     public function destroy($id)
     {
         $atendimento = Atendimento::findOrFail($id);
         $atendimento->delete();
-        return redirect()->route('atendimentos_index')->with('success', 'Atendimento removido com sucesso!');
+        return redirect()->route('atendimentos_index')->with('mensagem', 'Atendimento removido com sucesso!');
     }
 
     public function buscarPorNome(Request $request)

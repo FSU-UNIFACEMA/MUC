@@ -10,6 +10,7 @@
                 <input type="text" class="form-control" name="nome_projeto" placeholder="Buscar por nome do projeto">
                 <button type="submit" class="btn btn-primary">Buscar</button>
             </div>
+
         </form>
         @if ($projeto->isEmpty())
             <div class="alert alert-info" role="alert">
@@ -30,17 +31,17 @@
                         <tr>
                             <td>{{ $p->nome_projeto}}</td>
                             <td>{{ $p->descricao_projeto}}</td>
-                            <td>
-                                <form id="deleteForm{{ $p->id }}" action="{{ route('excluir_projetos', $p->id) }}"
-                                      method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-dark btn-sm">Apagar</button>
-                                </form>
-                                <button class="btn btn-secondary btn-sm"
+                            <td class="d-flex">
+                                <button class="btn btn-success btn-sm m-"
                                         onclick="openEditModal('{{ $p->id }}', '{{ $p->nome_projeto}}', '{{ $p->descricao_projeto}}')">
                                     Editar
                                 </button>
+                                <form class="ml-2" id="deleteForm{{ $p->id }}" action="{{ route('excluir_projetos', $p->id) }}"
+                                      method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Apagar</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -87,11 +88,11 @@
         }
     </script>
 
-    <!-- Adicione o Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 @endsection

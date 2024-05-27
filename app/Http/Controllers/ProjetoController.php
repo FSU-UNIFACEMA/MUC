@@ -38,14 +38,14 @@ class ProjetoController extends Controller
     {
         $projeto = Projeto::findOrFail($id);
         $projeto->update($request->all());
-        return redirect()->route('projetos_index')->with('success', 'pessoa atualizada com sucesso.');
+        return redirect()->route('projetos_index')->with('mensagem', 'pessoa atualizada com sucesso.');
     }
 
     public function destroy($id)
     {
         $projeto = Projeto::findOrFail($id);
         $projeto->delete();
-        return redirect()->route('projetos_index')->with('success', 'projeto removido com sucesso!');
+        return redirect()->route('projetos_index')->with('mensagem', 'projeto removido com sucesso!');
 
     }
 

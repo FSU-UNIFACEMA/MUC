@@ -49,7 +49,7 @@ class AuthController extends Controller
             $errors = $validator->errors();
 
             if ($errors->has('email')){
-                return redirect()->route('user_create')->with('messageproj', 'emailAlreadyExists');
+                return redirect()->route('user_create')->with('mensagem', 'email já existe');
             }else{
                 return response()->json(['error' => $validator->errors()], 400);
             }
@@ -64,9 +64,9 @@ class AuthController extends Controller
 
         try {
             Auth::login($user);
-            return redirect()->route('user_create')->with('messageproj', 'success');
+            return redirect()->route('user_create')->with('mensagem', 'usuário criado com sucesso');
         }catch (\Exception $e) {
-            return redirect('user_create')->with('messageproj', 'error');
+            return redirect('user_create')->with('mensagem', 'Não foi possível criar o usuário. Por favor, tente novamente.');
         }
     }
 
@@ -85,7 +85,7 @@ class AuthController extends Controller
             $user = Auth::user();
             return redirect()->route('principal');
         } else {
-            return redirect()->route('login')->with('error', 'Usuário ou senha inválidos.');
+            return redirect()->route('login')->with('mensagem', 'Usuário ou senha inválidos.');
         }
     }
 
@@ -100,13 +100,13 @@ class AuthController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect()->route('user_index')->with('success', 'Usuário apagado com sucesso.');
+        return redirect()->route('user_index')->with('mensagem', 'Usuário apagado com sucesso.');
     }
 
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
         $user->update($request->all());
-        return redirect()->route('user_index')->with('success', 'Usuário atualizado com sucesso.');
+        return redirect()->route('user_index')->with('mensagem', 'Usuário atualizado com sucesso.');
     }
 }

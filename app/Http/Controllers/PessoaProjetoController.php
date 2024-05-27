@@ -29,7 +29,7 @@ class PessoaProjetoController extends Controller
         $pessoa->projetos()->sync($request->projeto);
 
 
-        return redirect()->back()->with('success', 'Projetos sociais atualizados com sucesso.');
+        return redirect()->back()->with('mensagem', 'Projetos sociais atualizados com sucesso.');
     }
 
     public function buscaPessoaProjeto(Request $request)

@@ -26,7 +26,6 @@
                     <tr>
                         <th scope="col">Nome</th>
                         <th scope="col">Descrição</th>
-                        <th scope="col">Senha</th>
                         <th scope="col">Ações</th>
                     </tr>
                     </thead>
@@ -35,16 +34,16 @@
                         <tr>
                             <td>{{ $u->name}}</td>
                             <td>{{ $u->email}}</td>
-                            <td type="password">***********</td>
-                            <td>
+                            <td class="d-flex justify-items-center">
+                                <button class="btn btn-success btn-sm mr-2"
+                                        onclick="openEditModal('{{ $u->id }}', '{{ $u->name}}', '{{ $u->email}}')">Editar
+                                </button>
+
                                 <form id="deleteForm" action="{{ route('user_excluir', $u->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-dark btn-sm">Apagar</button>
+                                    <button onclick="return confirm('Tem certeza que deseja excluir?')" type="submit" class="btn btn-danger btn-sm">Apagar</button>
                                 </form>
-                                <button class="btn btn-secondary btn-sm"
-                                        onclick="openEditModal('{{ $u->id }}', '{{ $u->name}}', '{{ $u->email}}')">Editar
-                                </button>
                             </td>
                         </tr>
                     @endforeach
@@ -55,7 +54,6 @@
     </div>
 
     <!-- Modal -->
-    <
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -82,9 +80,6 @@
         </div>
     </div>
 
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function openEditModal(id, name, email) {
             $('#editModal').modal('show');
@@ -94,8 +89,11 @@
         }
     </script>
 
-    <!-- Adicione o Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 @endsection

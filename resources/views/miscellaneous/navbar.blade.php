@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-purple px-3 bg-purple">
-    <a class="navbar-brand" href="{{route('principal')}}">MUC</a>
+<nav class="navbar navbar-expand-lg navbar-purple px-3 bg-primary">
+    <a class="navbar-brand text-white" href="{{route('principal')}}">MUC</a>
     <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">

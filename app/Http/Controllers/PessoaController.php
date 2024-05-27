@@ -87,13 +87,13 @@ class PessoaController extends Controller
     {
         $pessoa = Pessoa::findOrFail($id);
         $pessoa->delete();
-        return redirect()->route('pessoas_index')->with('success', 'pessoa apagada com sucesso.');
+        return redirect()->route('pessoas_index')->with('mensagem', 'pessoa apagada com sucesso.');
     }
 
     public function update(Request $request, $id)
     {
         $pessoa = Pessoa::findOrFail($id);
         $pessoa->update($request->all());
-        return redirect()->route('pessoas_index')->with('success', 'pessoa atualizada com sucesso.');
+        return redirect()->route('pessoas_index')->with('mensagem', 'pessoa atualizada com sucesso.');
     }
 }
