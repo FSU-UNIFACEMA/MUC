@@ -31,9 +31,13 @@ class AuthController extends Controller
 
         if ($nome) {
             $user = User::where('name', 'like', '%' . $nome . '%')->get();
+            return view('user.index', compact('user'));
         } else {
             $user = User::all();
+            return view('user.index', compact('user'));
         }
+
+
     }
 
     public function register(Request $request)

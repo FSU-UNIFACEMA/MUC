@@ -4,7 +4,7 @@
 
 <!-- Conteúdo -->
 <div class="container">
-    <h5 class="text-center">Dados Pessoais</h5>
+    <h2 class="text-center">Dados pessoais</h2>
 
     <form action="{{ route('pessoas_store') }}" method="POST">
         @csrf
@@ -29,7 +29,7 @@
             </div>
             <div class="form-group col-md-2">
                 <label for="numero_casa">N°</label>
-                <input type="text" class="form-control" id="numero_casa" name="numero_casa" placeholder="Número"
+                <input type="number" class="form-control" id="numero_casa" name="numero_casa" placeholder="Número"
                        required>
             </div>
             <div class="form-group col-md-4">
@@ -37,6 +37,7 @@
                 <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" required>
             </div>
         </div>
+
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="ponto_ref">Ponto de referência</label>
@@ -58,28 +59,36 @@
                 </select>
             </div>
         </div>
+
         <div class="form-row">
-            <div class="form-group">
+
+            <div class="form-group col-md-4">
                 <label for="cpf">CPF</label>
                 <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" required>
             </div>
-            <div class="form-group">
+
+            <div class="form-group col-md-4">
                 <label for="rg">RG</label>
                 <input type="text" class="form-control" id="rg" name="rg" placeholder="RG" required>
             </div>
-            <div class="form-group">
+
+            <div class="form-group col-md-4">
+
                 <label for="sexo">Gênero</label><br>
+
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="sexo" id="sexo_feminino" value="Feminino">
                     <label class="form-check-label mr-3" for="sexo_feminino">Feminino</label>
                 </div>
+
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="sexo" id="sexo_masculino" value="Masculino">
                     <label class="form-check-label mr-3" for="sexo_masculino">Masculino</label>
                 </div>
-            </div>
-        </div>
 
+            </div>
+
+        </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -184,86 +193,97 @@
 
         <hr/>
 
-        <h5 class="text-center">Habitação</h5>
-        <div class="text-center">
+        <h5 class="">Habitação</h5>
+        <div class="d-flex flex-column">
+
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="habitacao" id="proprio" value="Proprio">
+                <input class="form-check-input" type="radio" name="habitacao" id="proprio" value="Proprio">
                 <label class="form-check-label" for="proprio">Próprio</label>
             </div>
+
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="habitacao" id="alugado" value="Alugado">
+                <input class="form-check-input" type="radio" name="habitacao" id="alugado" value="Alugado">
                 <label class="form-check-label" for="alugado">Alugado</label>
             </div>
+
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="habitacao" id="cedido" value="Cedido">
+                <input class="form-check-input" type="radio" name="habitacao" id="cedido" value="Cedido">
                 <label class="form-check-label" for="cedido">Cedido</label>
             </div>
+
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="habitacao" id="situacao_rua"
+                <input class="form-check-input" type="radio" name="habitacao" id="situacao_rua"
                        value="Situacao_de_rua">
                 <label class="form-check-label" for="situacao_rua">Situação de Rua</label>
             </div>
+
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="habitacao" id="outra" value="Outra">
+                <input class="form-check-input" type="radio" name="habitacao" id="outra" value="Outra">
                 <label class="form-check-label" for="outra">Outra</label>
             </div>
+
         </div>
 
         <hr/>
         <!-- Condições de Moradia -->
-        <h5 class="text-center">Condições de Moradia</h5>
-        <div class="text-center">
+        <h5>Condições de Moradia</h5>
+
+        <div class="d-flex flex-column">
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="condicoes_moradia[]" id="taipa" value="Taipa">
+                <input class="form-check-input" type="radio" name="condicoes_moradia[]" id="taipa" value="Taipa">
                 <label class="form-check-label" for="taipa">Taipa</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="condicoes_moradia[]" id="alvenaria"
+                <input class="form-check-input" type="radio" name="condicoes_moradia[]" id="alvenaria"
                        value="Alvenaria">
                 <label class="form-check-label" for="alvenaria">Alvenaria</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="condicoes_moradia[]" id="energia_eletrica"
+                <input class="form-check-input" type="radio" name="condicoes_moradia[]" id="energia_eletrica"
                        value="Energia Elétrica">
                 <label class="form-check-label" for="energia_eletrica">Energia Elétrica</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="condicoes_moradia[]" id="agua_encanada"
+                <input class="form-check-input" type="radio" name="condicoes_moradia[]" id="agua_encanada"
                        value="Água Encanada">
                 <label class="form-check-label" for="agua_encanada">Água Encanada</label>
             </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="condicoes_moradia[]" id="nenhuma"
+                       value="Nenhuma">
+                <label class="form-check-label" for="agua_encanada">Nenhuma</label>
+            </div>
         </div>
 
-        <!-- Número de Cômodos -->
-        <hr/>
         <div class="form-group">
-            <label for="num_comodos">N° de Cômodos</label>
-            <input type="number" class="form-control" id="num_comodos" name="num_comodos"
+            <input type="number" class="form-control mt-2" id="num_comodos" name="num_comodos"
                    placeholder="Número de cômodos">
         </div>
 
+        <hr>
+
         <!-- Acesso ao Domicílio -->
-        <h5 class="text-center">Acesso ao Domicílio</h5>
-        <div class="text-center">
+        <h5>Acesso ao Domicílio</h5>
+        <div class="d-flex flex-column">
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="acesso_domicilio[]" id="calcamento"
+                <input class="form-check-input" type="radio" name="acesso_domicilio[]" id="calcamento"
                        value="Calçamento">
                 <label class="form-check-label" for="calcamento">Calçamento</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="acesso_domicilio[]" id="chao_batido"
+                <input class="form-check-input" type="radio" name="acesso_domicilio[]" id="chao_batido"
                        value="Chão Batido">
                 <label class="form-check-label" for="chao_batido">Chão Batido</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="acesso_domicilio[]" id="asfalto" value="Asfalto">
+                <input class="form-check-input" type="radio" name="acesso_domicilio[]" id="asfalto" value="Asfalto">
                 <label class="form-check-label" for="asfalto">Asfalto</label>
             </div>
         </div>
 
 
         <hr/>
-        <h5 class="text-center">Questionário Sociofamiliar</h5>
+        <h5>Questionário Sociofamiliar</h5>
 
         <!-- Benefício Social -->
         <div class="form-group">
@@ -303,12 +323,13 @@
                 <input type="text" class="form-control" id="qual_necessidade" name="qual_necessidade"
                        placeholder="Descreva a necessidade especial">
             </div>
+
             <div class="form-group">
-                <label for="disciplinas" class="form-label">Projeto social que irá participar</label>
-                <select class="form-control form-control-lg" id="projetos" name="projetos[]" multiple>
+                <label for="projetos" class="form-label">Projeto social que irá participar</label>
+                <select class="form-control" id="projetos" name="projetos[]" required>
                     @foreach($projetos as $projeto)
                         <option value="{{ $projeto->id }}"> {{ $projeto->nome_projeto}}</option>
-                    @endforeach
+                @endforeach
                 </select>
             </div>
             <div class="form-group text-right">
@@ -345,9 +366,4 @@
     });
 </script>
 
-<!-- Adicione o Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
 @endsection

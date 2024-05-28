@@ -11,7 +11,7 @@
         <form action="{{ route('user_busca') }}" method="POST" class="mb-3">
             @csrf
             <div class="input-group">
-                <input type="text" class="form-control" name="nome_projeto" placeholder="Buscar por nome do projeto">
+                <input type="text" class="form-control" name="nome" placeholder="Buscar por nome de Usuario">
                 <button type="submit" class="btn btn-primary">Buscar</button>
             </div>
         </form>
@@ -88,12 +88,5 @@
             $('#email').val(email);
         }
     </script>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 @endsection

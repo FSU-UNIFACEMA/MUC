@@ -10,13 +10,14 @@
     <link rel="manifest" href="../manifest.json">
     <link href="../css/bootstrap.css" rel="stylesheet">
 </head>
-<body style="overflow-x: hidden">
+<body>
     <div>
 
         {{--Navbar--}}
         @include('miscellaneous.navbar')
 
-        <div class="px-md-5 px-3 pt-3 min-h-100">
+        <div class="px-md-5 px-3 pt-3 min-vh-100">
+
             {{--Pagina que vai entrar--}}
             @yield('content')
 

@@ -35,16 +35,17 @@
                             <td>{{ $p->numero_casa}}</td>
                             <td>{{ $p->bairro}}</td>
                             <td>{{ $p->telefone}}</td>
-                            <td>
-                                <form id="deleteForm" action="{{ route('excluir_pessoas', $p->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-dark btn-sm">Apagar</button>
-                                </form>
-                                <button class="btn btn-secondary btn-sm"
+                            <td class="d-flex">
+                                <button class="btn btn-success btn-sm mr-2"
                                         onclick="openEditModal('{{ $p->id }}', '{{ $p->nome}}', '{{ $p->endereco}}', '{{ $p->numero_casa }}', '{{ $p->bairro }}', '{{ $p->telefone }}')">
                                     Editar
                                 </button>
+
+                                <form id="deleteForm" action="{{ route('excluir_pessoas', $p->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button onclick="return confirm('Tem certeza que deseja excluir')" type="submit" class="btn btn-danger btn-sm">Apagar</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -81,14 +82,9 @@
         </div>
     </div>
 
-
-    <!-- Adicione o Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
         function openEditModal(id, nome, endereco, numero_casa, bairro, telefone) {
             $('#editModal').modal('show');
