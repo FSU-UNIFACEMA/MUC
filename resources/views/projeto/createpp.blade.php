@@ -41,10 +41,18 @@
                                     {{ $projeto->nome_projeto }}<br>
                                 @endforeach
                             </td>
-                            <td>
-                                <button class="btn btn-secondary btn-sm"
-                                        onclick="openEditModal('{{ $p->id }}','{{ $p->nome }}')">Editar Projeto Social
+                            <td class="d-flex">
+                                <button onclick="openEditModal('{{$p->id}}')" type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModal">
+                                    Incluir projeto
                                 </button>
+
+                                <form method="POST" action="{{route('projeto_pessoa_excluir', $p->id)}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button onclick="return confirm('Tem certeza que deseja apagar?')" type="submit" class="btn btn-danger ml-3">
+                                        Remover projeto
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -54,12 +62,12 @@
         @endif
     </div>
 
-
-    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <!-- Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel">Editar Aluno</h5>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Aluno</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -67,7 +75,8 @@
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
-                            <label for="projeto" class="form-label">Disciplinas</label>
+                            <label for="projeto" class="form-label">Projetos</label>
+                            <input type="hidden" id="id" name="id" hidden>
                             <select class="form-control" id="projeto" name="projeto[]" multiple>
                                 @foreach($projetos as $proj)
                                     <option value="{{ $proj->id }}" {{ $p->projetos->contains($proj) ? 'selected' : '' }}>
@@ -85,13 +94,8 @@
     </div>
 
     <script>
-        function openEditModal(projeto) {
-            $('#projeto').val(projeto);
-
-            var myModal = new bootstrap.Modal(document.getElementById('editModal'), {
-                keyboard: false
-            });
-            myModal.show();
+        function openEditModal(id) {
+            $('#id').val(id);
         }
     </script>
 

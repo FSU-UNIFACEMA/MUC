@@ -58,6 +58,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/projetos/registro', [PessoaProjetoController::class, 'create'])->name('projeto_pessoa_registro');
     Route::post('/projetos/buscapp', [PessoaProjetoController::class, 'buscaPessoaProjeto'])->name('projeto_pessoa_busca');
     Route::put('/pessoaprojetos/{id}', [PessoaProjetoController::class, 'update'])->name('projeto_pessoa_update');
+    Route::delete('/pessoaprojetos/{id}', [PessoaProjetoController::class, 'destroy'])->name('projeto_pessoa_excluir');
 
     // Rotas para o usuário
     Route::post('/user/register', [AuthController::class, 'register'])->name('user_register');

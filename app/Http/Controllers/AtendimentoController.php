@@ -90,6 +90,6 @@ class AtendimentoController extends Controller
         } else {
             $atendimentos = Atendimento::all();
         }
-        return view('atendimentos.index', compact('atendimentos'));
+        return view('atendimento.index', compact('atendimentos'));
     }
 }

@@ -52,9 +52,10 @@ class AuthController extends Controller
 
             $errors = $validator->errors();
 
-            if ($errors->has('email')){
-                return redirect()->route('user_create')->with('mensagem', 'email já existe');
-            }else{
+            if ($errors->has('cpf')){
+                return redirect()->route('pessoas_create')->with('mensagem', 'cpf inválido');
+            }
+            else{
                 return response()->json(['error' => $validator->errors()], 400);
             }
 

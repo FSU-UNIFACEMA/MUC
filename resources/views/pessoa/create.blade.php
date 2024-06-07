@@ -4,7 +4,8 @@
 
 <!-- Conteúdo -->
 <div class="container">
-    <h2 class="text-center">Dados pessoais</h2>
+
+    <h1>Dados pessoais</h1>
 
     <form action="{{ route('pessoas_store') }}" method="POST">
         @csrf
@@ -24,7 +25,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="endereco">Endereço</label>
-                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Rua, Bairro, nº Casa"
+                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereço"
                        required>
             </div>
             <div class="form-group col-md-2">
@@ -304,7 +305,7 @@
                        placeholder="Digite o nome do benefício">
             </div>
         </div>
-        <hr>
+
         <!-- Necessidade Especial -->
         <div class="form-group">
             <label for="necessidade_especial">Possui necessidade especial?</label>
@@ -323,6 +324,8 @@
                 <input type="text" class="form-control" id="qual_necessidade" name="qual_necessidade"
                        placeholder="Descreva a necessidade especial">
             </div>
+
+            <hr>
 
             <div class="form-group">
                 <label for="projetos" class="form-label">Projeto social que irá participar</label>

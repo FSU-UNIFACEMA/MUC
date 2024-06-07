@@ -16,8 +16,10 @@
 
         <div class="row justify-content-center align-items-center" style="height: 100vh;">
 
-            <div class="col-md-6">
+            <div class="col-md-6 col-lg-4">
+
                 <h3>MUC - Mulheres e Meninas de Caxias</h3>
+
                 <div class="card">
 
                     <div class="card-header">{{ __('Login') }}</div>
@@ -62,10 +64,8 @@
         </div>
     </div>
 
-    <!-- Adicione o Bootstrap JS -->
-
-
     @include('miscellaneous.footer')
+
 
 </body>
 </html>

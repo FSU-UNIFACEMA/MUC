@@ -1,6 +1,7 @@
 @extends('layout')
 @section('content')
     <div class="container">
+
         <h1>Registro de associados</h1>
 
         <form action="{{ route('pessoas_busca') }}" method="POST" class="mb-3">
@@ -37,7 +38,7 @@
                             <td>{{ $p->telefone}}</td>
                             <td class="d-flex">
                                 <button class="btn btn-success btn-sm mr-2"
-                                        onclick="openEditModal('{{ $p->id }}', '{{ $p->nome}}', '{{ $p->endereco}}', '{{ $p->numero_casa }}', '{{ $p->bairro }}', '{{ $p->telefone }}')">
+                                        onclick="openEditModal('{{ $p->id }}', '{{ $p-> e}}', '{{ $p->endereco}}', '{{ $p->numero_casa }}', '{{ $p->bairro }}', '{{ $p->telefone }}')">
                                     Editar
                                 </button>
 
@@ -67,15 +68,34 @@
                     <form id="editForm" method="POST" action="">
                         @csrf
                         @method('PUT')
+
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome</label>
                             <input type="text" class="form-control" id="nome" name="nome">
                         </div>
+
+                        <div class="mb-3">
+                            <label for="telefone" class="form-label">Telefone</label>
+                            <input type="text" class="form-control" id="telefone" name="telefone">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="numero_casa" class="form-label">N° da casa</label>
+                            <input type="text" class="form-control" id="numero_casa" name="numero_casa">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="bairro" class="form-label">N° da casa</label>
+                            <input type="text" class="form-control" id="bairro" name="bairro">
+                        </div>
+
                         <div class="mb-3">
                             <label for="endereco" class="form-label">Endereço da pessoa</label>
                             <textarea type="text" class="form-control" id="endereco" name="endereco"></textarea>
                         </div>
+
                         <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+
                     </form>
                 </div>
             </div>

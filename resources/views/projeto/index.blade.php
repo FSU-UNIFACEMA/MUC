@@ -4,7 +4,7 @@
     <div class="container">
         <h1>Registro de projetos</h1>
 
-        <form action="{{ route('atendimentos_busca') }}" method="POST" class="mb-3">
+        <form action="{{ route('projetos_busca') }}" method="POST" class="mb-3">
             @csrf
             <div class="input-group">
                 <input type="text" class="form-control" name="nome_projeto" placeholder="Buscar por nome do projeto">
@@ -40,7 +40,7 @@
                                       method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm">Apagar</button>
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Certeza que deseja excluir?')">Apagar</button>
                                 </form>
                             </td>
                         </tr>
@@ -51,13 +51,13 @@
         @endif
     </div>
 
-    <!-- Modal -->
+    <!-- Modal editar projeto -->
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="editModalLabel">Editar Projeto</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
                 </div>
                 <div class="modal-body">
                     <form id="editForm" method="POST" action="">
@@ -85,6 +85,10 @@
             $('#editForm').attr('action', '/projetos/' + id);
             $('#nome_projeto').val(nome_projeto);
             $('#descricao_projeto').val(descricao_projeto);
+        }
+
+        function closeEditModal() {
+            $('#editModal').modal('hide');
         }
     </script>
 

@@ -26,9 +26,9 @@ class ProjetoController extends Controller
                 'nome_projeto' => $request->nome_projeto,
                 'descricao_projeto' => $request->descricao_projeto,
             ]);
-            return redirect()->route('projetos_create')->with('messageproj', 'success');
+            return redirect()->route('projetos_create')->with('mensagem', 'projeto criado com sucesso');
         } catch (\Exception $e) {
-            return redirect()->route('projetos_create')->with('messageproj', 'error');
+            return redirect()->route('projetos_create')->with('mensagem', 'Erro ao criar o projeto');
         }
 
     }
